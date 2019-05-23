@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="enrollmentAgency">
+            <h2><span jhiTranslate="cwcrm2App.enrollmentAgency.detail.title">Enrollment Agency</span> {{enrollmentAgency.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cwcrm2App.enrollmentAgency.name">Name</span></dt>
+                <dd>
+                    <span>{{enrollmentAgency.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.enrollmentAgency.office">Office</span></dt>
+                <dd>
+                    <span>{{enrollmentAgency.office}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.enrollmentAgency.recordNumber">Record Number</span></dt>
+                <dd>
+                    <span>{{enrollmentAgency.recordNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.enrollmentAgency.phone">Phone</span></dt>
+                <dd>
+                    <span>{{enrollmentAgency.phone}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/enrollment-agency', enrollmentAgency.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-support-coordinator-heading" jhiTranslate="cwcrm2App.supportCoordinator.home.createOrEditLabel">Create or edit a Support Coordinator</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!supportCoordinator.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="supportCoordinator.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.firstName" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                        [(ngModel)]="supportCoordinator.firstName" required/>
+                    <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.firstName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.lastName" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                        [(ngModel)]="supportCoordinator.lastName" required/>
+                    <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.phone" for="field_phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                        [(ngModel)]="supportCoordinator.phone" required/>
+                    <div [hidden]="!(editForm.controls.phone?.dirty && editForm.controls.phone?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.phone?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.emailId" for="field_emailId">Email Id</label>
+                    <input type="text" class="form-control" name="emailId" id="field_emailId"
+                        [(ngModel)]="supportCoordinator.emailId" required/>
+                    <div [hidden]="!(editForm.controls.emailId?.dirty && editForm.controls.emailId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.emailId?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.dateHired" for="field_dateHired">Date Hired</label>
+                    <div class="input-group">
+                        <input id="field_dateHired" type="text" class="form-control" name="dateHired" ngbDatepicker  #dateHiredDp="ngbDatepicker" [(ngModel)]="supportCoordinator.dateHired"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateHiredDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.dateHired?.dirty && editForm.controls.dateHired?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.dateHired?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.userName" for="field_userName">User Name</label>
+                    <input type="text" class="form-control" name="userName" id="field_userName"
+                        [(ngModel)]="supportCoordinator.userName" required/>
+                    <div [hidden]="!(editForm.controls.userName?.dirty && editForm.controls.userName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.userName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.department" for="field_department">Department</label>
+                    <select class="form-control" id="field_department" name="department" [(ngModel)]="supportCoordinator.departmentId" required>
+                        <option *ngIf="!editForm.value.department" [ngValue]="null" selected></option>
+                        <option [ngValue]="departmentOption.id" *ngFor="let departmentOption of departments; trackBy: trackDepartmentById">{{departmentOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.department?.dirty && editForm.controls.department?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.department?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.employeeType" for="field_employeeType">Employee Type</label>
+                    <select class="form-control" id="field_employeeType" name="employeeType" [(ngModel)]="supportCoordinator.employeeTypeId" required>
+                        <option *ngIf="!editForm.value.employeeType" [ngValue]="null" selected></option>
+                        <option [ngValue]="employeeTypeOption.id" *ngFor="let employeeTypeOption of employeetypes; trackBy: trackEmployeeTypeById">{{employeeTypeOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.employeeType?.dirty && editForm.controls.employeeType?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.employeeType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.supportCoordinator.employeeSubType" for="field_employeeSubType">Employee Sub Type</label>
+                    <select class="form-control" id="field_employeeSubType" name="employeeSubType" [(ngModel)]="supportCoordinator.employeeSubTypeId" required>
+                        <option *ngIf="!editForm.value.employeeSubType" [ngValue]="null" selected></option>
+                        <option [ngValue]="employeeSubTypeOption.id" *ngFor="let employeeSubTypeOption of employeesubtypes; trackBy: trackEmployeeSubTypeById">{{employeeSubTypeOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.employeeSubType?.dirty && editForm.controls.employeeSubType?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.employeeSubType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

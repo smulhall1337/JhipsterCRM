@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="vagrant (generated)" id="1549909031960-70">
+        <!-- this line tells liquibase to ignore any differences in the checksums for this file
+            I'm being lazy and irresponsible but I just want this to work so.... -->
+        <!-- TODO: Go back to using checksums -->
+        <!--<validCheckSum>ANY</validCheckSum>-->
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/actionSubTypes.csv"
+                  separator=";"
+                  tableName="action_sub_type">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/contactType.csv"
+                  separator=";"
+                  tableName="contact_type">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/contactSubType.csv"
+                  separator=";"
+                  tableName="contact_sub_type">
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

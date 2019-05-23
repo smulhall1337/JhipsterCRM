@@ -1,0 +1,48 @@
+{
+    "cwcrm2App": {
+        "participant": {
+            "home": {
+                "title": "Participants",
+                "createLabel": "Create a new Participant",
+                "createOrEditLabel": "Create or edit a Participant"
+            },
+            "created": "A new Participant is created with identifier {{ param }}",
+            "updated": "A Participant is updated with identifier {{ param }}",
+            "deleted": "A Participant is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Participant {{ id }}?"
+            },
+            "detail": {
+                "title": "Participant"
+            },
+            "firstName": "First Name",
+            "middleInitial": "Middle Initial",
+            "lastName": "Last Name",
+            "title": "Title",
+            "registrationDate": "Registration Date",
+            "address": "Address",
+            "city": "City",
+            "state": "State",
+            "dob": "Dob",
+            "primaryPhone": "Primary Phone",
+            "primaryPhoneType": "Primary Phone Type",
+            "secondaryPhone": "Secondary Phone",
+            "secondaryPhoneType": "Secondary Phone Type",
+            "email": "Email",
+            "zip": "Zip",
+            "medicareIdNumber": "Medicare Id Number",
+            "medicaidIdNumber": "Medicaid Id Number",
+            "gender": "Gender",
+            "participantStatus": "Participant Status",
+            "county": "County",
+            "dateAuthorized": "Date Authorized",
+            "authorizationNumber": "Authorization Number",
+            "contactStatus": "Contact Status",
+            "contactSubStatus": "Contact Sub Status",
+            "mco": "Mco",
+            "referralType": "Referral Type",
+            "referralSource": "Referral Source",
+            "assignedTo": "Assigned To"
+        }
+    }
+}

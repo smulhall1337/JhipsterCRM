@@ -1,0 +1,17 @@
+<div *ngIf="isDataAvailable; else elseBlock">
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cwcrm2App.action.home.title">Actions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-action" [routerLink]="['/calendar/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="cwcrm2App.action.home.createLabel">
+            Create new Action
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+</div>
+<p-fullCalendar #fc [events]="eventSource" [options]="options" ></p-fullCalendar>
+<p-growl [value]="msgs"></p-growl>
+</div>
+<ng-template #elseBlock>Loading....</ng-template>

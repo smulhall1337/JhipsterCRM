@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-enrollment-agency-heading" jhiTranslate="cwcrm2App.enrollmentAgency.home.createOrEditLabel">Create or edit a Enrollment Agency</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!enrollmentAgency.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="enrollmentAgency.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.enrollmentAgency.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="enrollmentAgency.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.enrollmentAgency.office" for="field_office">Office</label>
+                    <input type="text" class="form-control" name="office" id="field_office"
+                        [(ngModel)]="enrollmentAgency.office" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.enrollmentAgency.recordNumber" for="field_recordNumber">Record Number</label>
+                    <input type="text" class="form-control" name="recordNumber" id="field_recordNumber"
+                        [(ngModel)]="enrollmentAgency.recordNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.enrollmentAgency.phone" for="field_phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                        [(ngModel)]="enrollmentAgency.phone" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

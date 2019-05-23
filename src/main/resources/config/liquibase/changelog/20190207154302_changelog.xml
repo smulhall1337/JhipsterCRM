@@ -1,0 +1,495 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="vagrant (generated)" id="1549554188301-1">
+        <createTable tableName="action">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="actionPK"/>
+            </column>
+            <column name="due_date" type="BINARY(255)"/>
+            <column name="end_date_time" type="BINARY(255)"/>
+            <column name="notes" type="CLOB"/>
+            <column name="start_date_time" type="BINARY(255)"/>
+            <column name="action_status_id" type="BIGINT"/>
+            <column name="action_sub_type_id" type="BIGINT"/>
+            <column name="action_type_id" type="BIGINT"/>
+            <column name="participant_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-2">
+        <createTable tableName="action_status">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="action_statusPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-3">
+        <createTable tableName="action_sub_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="action_sub_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sub_type_of_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-4">
+        <createTable tableName="action_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="action_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-5">
+        <createTable tableName="contact_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contact_historyPK"/>
+            </column>
+            <column name="jhi_date" type="BINARY(255)"/>
+            <column name="notes" type="CLOB"/>
+            <column name="contact_sub_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_type_id" type="BIGINT"/>
+            <column name="participant_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-6">
+        <createTable tableName="contact_status">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contact_statusPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-7">
+        <createTable tableName="contact_sub_status">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contact_sub_statusPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sub_type_of_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-8">
+        <createTable tableName="contact_sub_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contact_sub_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-9">
+        <createTable tableName="contact_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="contact_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-10">
+        <createTable tableName="department">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="departmentPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-11">
+        <createTable tableName="employee_sub_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="employee_sub_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-12">
+        <createTable tableName="employee_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="employee_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-13">
+        <createTable tableName="enrollment_agency">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="enrollment_agencyPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="office" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="record_number" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-14">
+        <createTable tableName="extended_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="extended_userPK"/>
+            </column>
+            <column name="department_id" type="BIGINT"/>
+            <column name="employee_sub_type_id" type="BIGINT"/>
+            <column name="employee_type_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-15">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-16">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="BINARY(255)"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-17">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-18">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="BINARY(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="BINARY(255)"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(6)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="BINARY(255)"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-19">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-20">
+        <createTable tableName="mco">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="mcoPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-21">
+        <createTable tableName="participant">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="participantPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="dob" type="BINARY(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="medicaid_id_number" type="VARCHAR(255)"/>
+            <column name="medicare_id_number" type="VARCHAR(255)"/>
+            <column name="middle_initial" type="VARCHAR(255)"/>
+            <column name="participant_status" type="INT"/>
+            <column name="primary_phone" type="VARCHAR(255)"/>
+            <column name="primary_phone_type" type="VARCHAR(255)"/>
+            <column name="registration_date" type="BINARY(255)"/>
+            <column name="secondary_phone" type="VARCHAR(255)"/>
+            <column name="secondary_phone_type" type="VARCHAR(255)"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="zip" type="VARCHAR(255)"/>
+            <column name="assigned_to_id" type="BIGINT"/>
+            <column name="contact_status_id" type="BIGINT"/>
+            <column name="contact_sub_status_id" type="BIGINT"/>
+            <column name="mco_id" type="BIGINT"/>
+            <column name="referral_source_id" type="BIGINT"/>
+            <column name="referral_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-22">
+        <createTable tableName="participant_notes">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="participant_notesPK"/>
+            </column>
+            <column name="notes" type="CLOB"/>
+            <column name="participant_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-23">
+        <createTable tableName="physician">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="physicianPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="disability" type="VARCHAR(255)"/>
+            <column name="fax" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="notes" type="CLOB"/>
+            <column name="phone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-24">
+        <createTable tableName="priority">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="priorityPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-25">
+        <createTable tableName="referral_source">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="referral_sourcePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-26">
+        <createTable tableName="referral_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="referral_typePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-27">
+        <createTable tableName="support_coordinator">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="support_coordinatorPK"/>
+            </column>
+            <column name="date_hired" type="BINARY(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="department_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_sub_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-28">
+        <createTable tableName="waiver">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="waiverPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-29">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-30">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-31">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-32">
+        <addUniqueConstraint columnNames="name" constraintName="UC_CONTACT_SUB_TYPENAME_COL" tableName="contact_sub_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-33">
+        <addUniqueConstraint columnNames="department_id" constraintName="UC_EXTENDED_USERDEPARTMENT_ID_COL" tableName="extended_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-34">
+        <addUniqueConstraint columnNames="employee_sub_type_id" constraintName="UC_EXTENDED_USEREMPLOYEE_SUB_TYPE_ID_COL" tableName="extended_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-35">
+        <addUniqueConstraint columnNames="employee_type_id" constraintName="UC_EXTENDED_USEREMPLOYEE_TYPE_ID_COL" tableName="extended_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-36">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_EXTENDED_USERUSER_ID_COL" tableName="extended_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-37">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-38">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-39">
+        <addUniqueConstraint columnNames="employee_type_id" constraintName="UK_4149jj2u3ipfi7abbny007yg" tableName="support_coordinator"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-40">
+        <addUniqueConstraint columnNames="department_id" constraintName="UK_ctbg734ab4gsh0cdvbmw7yd4u" tableName="support_coordinator"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-41">
+        <addUniqueConstraint columnNames="employee_sub_type_id" constraintName="UK_ec6d6ik6du1oyer2gtxiaowm8" tableName="support_coordinator"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-42">
+        <addForeignKeyConstraint baseColumnNames="action_sub_type_id" baseTableName="action" constraintName="FK22c5vusr5jshe5cu45pinenst" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="action_sub_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-43">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-44">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-45">
+        <addForeignKeyConstraint baseColumnNames="employee_sub_type_id" baseTableName="support_coordinator" constraintName="FK34xaur2mniv20n35tvnog908n" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee_sub_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-46">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-47">
+        <addForeignKeyConstraint baseColumnNames="participant_id" baseTableName="participant_notes" constraintName="FK58kmcgx5k1fugr6qp1veex4kk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="participant"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-48">
+        <addForeignKeyConstraint baseColumnNames="assigned_to_id" baseTableName="participant" constraintName="FK6b1ady1c6hjmcw21hnka9jf09" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-49">
+        <addForeignKeyConstraint baseColumnNames="action_type_id" baseTableName="action" constraintName="FK7dauqaa033jldyrnyur8q87qw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="action_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-50">
+        <addForeignKeyConstraint baseColumnNames="department_id" baseTableName="support_coordinator" constraintName="FK8hww5hbirhpc7e3lspla5ogk0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="department"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-51">
+        <addForeignKeyConstraint baseColumnNames="sub_type_of_id" baseTableName="contact_sub_status" constraintName="FKdly46xxn8uyqci3et0hk9ypti" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="contact_status"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-52">
+        <addForeignKeyConstraint baseColumnNames="participant_id" baseTableName="contact_history" constraintName="FKec0wh2hxxonrwk0o12k5jkr86" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="participant"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-53">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="extended_user" constraintName="FKejncwg3ujqkf3ejolj1dspltu" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-54">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="contact_history" constraintName="FKemuas7x5kwrapar33sy2urdgm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-55">
+        <addForeignKeyConstraint baseColumnNames="sub_type_of_id" baseTableName="action_sub_type" constraintName="FKg1bpov1uyrv0xa58ungv69ymk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="action_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-56">
+        <addForeignKeyConstraint baseColumnNames="employee_type_id" baseTableName="support_coordinator" constraintName="FKhqblon2nt8745apmxturv5q8q" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-57">
+        <addForeignKeyConstraint baseColumnNames="contact_status_id" baseTableName="participant" constraintName="FKk8lym8a07umqhhpe9vruj288x" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="contact_status"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-58">
+        <addForeignKeyConstraint baseColumnNames="employee_sub_type_id" baseTableName="extended_user" constraintName="FKl87y889pl512a80o5ryfd3ac5" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee_sub_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-59">
+        <addForeignKeyConstraint baseColumnNames="referral_type_id" baseTableName="participant" constraintName="FKm84ev612461bb9kk5baygl7fb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="referral_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-60">
+        <addForeignKeyConstraint baseColumnNames="employee_type_id" baseTableName="extended_user" constraintName="FKmrtm647m6ixgkwcri7b6xshjg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-61">
+        <addForeignKeyConstraint baseColumnNames="participant_id" baseTableName="action" constraintName="FKmta6prx3i0ppgnlihiyj1xq09" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="participant"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-62">
+        <addForeignKeyConstraint baseColumnNames="contact_type_id" baseTableName="contact_history" constraintName="FKnrh2efvr9a25jfv74s2dlrlol" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="contact_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-63">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="action" constraintName="FKo2u0bcd0jf8pcyra3ggytchkk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-64">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="participant_notes" constraintName="FKo5iu6lsofptq7lmcbpu6i8k0w" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-65">
+        <addForeignKeyConstraint baseColumnNames="contact_sub_type_id" baseTableName="contact_history" constraintName="FKoakoqablkmyewjqrldvtnpugd" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="contact_sub_type"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-66">
+        <addForeignKeyConstraint baseColumnNames="referral_source_id" baseTableName="participant" constraintName="FKpxhtslkh41mp99t10cc5m17qy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="referral_source"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-67">
+        <addForeignKeyConstraint baseColumnNames="mco_id" baseTableName="participant" constraintName="FKqwimm3bcrirvamfkuyofxrg17" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="mco"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-68">
+        <addForeignKeyConstraint baseColumnNames="department_id" baseTableName="extended_user" constraintName="FKsehmyav0j058syvbvh4v7rm6h" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="department"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-69">
+        <addForeignKeyConstraint baseColumnNames="action_status_id" baseTableName="action" constraintName="FKslbmkmfn1nklj4dcmg6ifnog2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="action_status"/>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1549554188301-70">
+        <addForeignKeyConstraint baseColumnNames="contact_sub_status_id" baseTableName="participant" constraintName="FKwy86qnee7uyedtrs7gvgsgfs" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="contact_sub_status"/>
+    </changeSet>
+</databaseChangeLog>

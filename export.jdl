@@ -1,0 +1,134 @@
+// JDL definition for application 'CWCRM2' generated with command 'jhipster export-jdl'
+
+entity Participant {
+  firstName String required,
+  middleInitial String,
+  lastName String required,
+  title String,
+  registrationDate LocalDate,
+  address String,
+  city String,
+  state String,
+  country String,
+  dob LocalDate,
+  primaryPhone String,
+  primaryPhoneType String,
+  secondaryPhone String,
+  secondaryPhoneType String,
+  email String,
+  zip String,
+  medicareIdNumber String,
+  medicaidIdNumber String,
+  gender String
+}
+entity Action {
+  dueDate LocalDate,
+  startDateTime Instant,
+  endDateTime Instant,
+  notes TextBlob
+}
+entity SupportCoordinator {
+  firstName String required,
+  lastName String required,
+  phone String required,
+  emailId String required,
+  dateHired LocalDate required,
+  userName String required
+}
+entity Waiver {
+  name String required
+}
+entity Department {
+  name String required
+}
+entity EmployeeType {
+  name String required
+}
+entity EmployeeSubType {
+  name String required
+}
+entity ContactStatus {
+  name String required
+}
+entity ContactSubStatus {
+  name String required
+}
+entity Priority {
+  name String required
+}
+entity MCO {
+  name String required
+}
+entity Physician {
+  firstName String,
+  lastName String,
+  phone String,
+  fax String,
+  address String,
+  notes TextBlob,
+  disability String
+}
+entity EnrollmentAgency {
+  name String,
+  office String,
+  recordNumber String,
+  phone String
+}
+entity ContactHistory {
+  date LocalDate,
+  notes TextBlob
+}
+entity ParticipantNotes {
+  notes TextBlob
+}
+entity ContactType {
+  name String required
+}
+entity ExtendedUser
+entity ReferralType {
+  name String required
+}
+entity ReferralSource {
+  name String required
+}
+entity ActionType {
+  name String
+}
+entity ActionSubType {
+  name String
+}
+entity ActionStatus {
+  name String
+}
+relationship OneToOne {
+  SupportCoordinator{department(name) required} to Department,
+  SupportCoordinator{employeeType(name) required} to EmployeeType,
+  SupportCoordinator{employeeSubType(name) required} to EmployeeSubType,
+  ExtendedUser{department(name)} to Department,
+  ExtendedUser{employeeType(name)} to EmployeeType,
+  ExtendedUser{employeeSubType(name)} to EmployeeSubType,
+  ExtendedUser{user} to User
+}
+relationship ManyToOne {
+  Participant{contactStatus(name)} to ContactStatus,
+  Participant{contactSubStatus(name)} to ContactSubStatus,
+  Participant{mco(name)} to MCO,
+  Participant{referralType(name)} to ReferralType,
+  Participant{referralSource(name)} to ReferralSource,
+  Participant{assignedTo(login)} to User,
+  Action{participant(firstName)} to Participant,
+  Action{user(login)} to User,
+  Action{actionSubType(name)} to ActionSubType,
+  Action{actionType(name)} to ActionType,
+  Action{actionStatus(name)} to ActionStatus,
+  ContactHistory{participant(firstName)} to Participant,
+  ContactHistory{user(login)} to User,
+  ContactHistory{contactType(name)} to ContactType,
+  ParticipantNotes{user(login)} to User,
+  ParticipantNotes{participant(firstName) required} to Participant,
+  ActionSubType{subTypeOf(name)} to ActionType
+}
+
+dto Participant, Action, SupportCoordinator, Waiver, Department, EmployeeType, EmployeeSubType, ContactStatus, ContactSubStatus, Priority, MCO, Physician, EnrollmentAgency, ContactHistory, ParticipantNotes, ContactType, ExtendedUser, ReferralType, ReferralSource, ActionType, ActionSubType, ActionStatus with mapstruct
+paginate Participant, SupportCoordinator with infinite-scroll
+service Participant, Action, SupportCoordinator, Waiver, Department, EmployeeType, EmployeeSubType, ContactStatus, ContactSubStatus, Priority, MCO, Physician, EnrollmentAgency, ContactHistory, ParticipantNotes, ContactType, ExtendedUser, ReferralType, ReferralSource, ActionType, ActionSubType, ActionStatus with serviceImpl

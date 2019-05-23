@@ -1,0 +1,21 @@
+{
+    "cwcrm2App": {
+        "mCO": {
+            "home": {
+                "title": "MCOS",
+                "createLabel": "Create a new MCO",
+                "createOrEditLabel": "Create or edit a MCO"
+            },
+            "created": "A new MCO is created with identifier {{ param }}",
+            "updated": "A MCO is updated with identifier {{ param }}",
+            "deleted": "A MCO is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete MCO {{ id }}?"
+            },
+            "detail": {
+                "title": "MCO"
+            },
+            "name": "Name"
+        }
+    }
+}

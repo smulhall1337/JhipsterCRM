@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="supportCoordinator">
+            <h2><span jhiTranslate="cwcrm2App.supportCoordinator.detail.title">Support Coordinator</span> {{supportCoordinator.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{supportCoordinator.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{supportCoordinator.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.phone">Phone</span></dt>
+                <dd>
+                    <span>{{supportCoordinator.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.emailId">Email Id</span></dt>
+                <dd>
+                    <span>{{supportCoordinator.emailId}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.dateHired">Date Hired</span></dt>
+                <dd>
+                    <span>{{supportCoordinator.dateHired}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.userName">User Name</span></dt>
+                <dd>
+                    <span>{{supportCoordinator.userName}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.department">Department</span></dt>
+                <dd>
+                    <div *ngIf="supportCoordinator.departmentId">
+                        <a [routerLink]="['/department', supportCoordinator.departmentId, 'view']">{{supportCoordinator.departmentName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.employeeType">Employee Type</span></dt>
+                <dd>
+                    <div *ngIf="supportCoordinator.employeeTypeId">
+                        <a [routerLink]="['/employee-type', supportCoordinator.employeeTypeId, 'view']">{{supportCoordinator.employeeTypeName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.supportCoordinator.employeeSubType">Employee Sub Type</span></dt>
+                <dd>
+                    <div *ngIf="supportCoordinator.employeeSubTypeId">
+                        <a [routerLink]="['/employee-sub-type', supportCoordinator.employeeSubTypeId, 'view']">{{supportCoordinator.employeeSubTypeName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/support-coordinator', supportCoordinator.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

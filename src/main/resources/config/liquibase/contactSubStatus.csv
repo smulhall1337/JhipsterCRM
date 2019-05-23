@@ -1,0 +1,25 @@
+name;sub_type_of_id
+0-Inquiry;1
+1-MA / Waiver App Complete;1
+2-LOCA Complete;1
+3-PCF Complete;1
+4-PAIEB Assessment Complete;1
+5-CAO Unassigned;1
+6-CAO Caseworker Assigned;1
+7- LTSS Approved;1
+Service Authorization Pending;1
+8-Appealing Decision;1
+Inquiry;2
+AAD Matching;2
+Client;3
+Lost to Another Agency;4
+LTSS Financial Denial;4
+LTSS Missing Info Denial;4
+Deceased;4
+UTC;4
+Uninterested;4
+Incarcerated;4
+AAD Unable to Staff;5
+Outside of Service Area;5
+Issue Case;5
+Unknown;7

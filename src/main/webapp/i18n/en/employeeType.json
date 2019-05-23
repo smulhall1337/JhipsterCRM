@@ -1,0 +1,21 @@
+{
+    "cwcrm2App": {
+        "employeeType": {
+            "home": {
+                "title": "Employee Types",
+                "createLabel": "Create a new Employee Type",
+                "createOrEditLabel": "Create or edit a Employee Type"
+            },
+            "created": "A new Employee Type is created with identifier {{ param }}",
+            "updated": "A Employee Type is updated with identifier {{ param }}",
+            "deleted": "A Employee Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee Type"
+            },
+            "name": "Name"
+        }
+    }
+}

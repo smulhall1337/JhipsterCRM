@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form">
+            <h2 id="jhi-participant-heading" jhiTranslate="cwcrm2App.participant.home.createOrEditLabel">Create or edit a Participant</h2>
+            <a routerLink="/participant">
+                <button type="button" id="cancel-save" class="btn btn-secondary">
+                    Back
+                </button>
+            </a>
+            <nav mat-tab-nav-bar>
+                <div>
+                    <jhi-alert-error></jhi-alert-error>
+                    <div class = "panel-body">
+                        <a [routerLink]="['demographics']">
+                            Demographics
+                        </a>
+                        <a routerLink="contact-history" routerLinkActive="active">
+                            Contact History
+                        </a>
+                        <a routerLink="actions" routerLinkActive="active">
+                            Actions
+                        </a>
+                        <a routerLink="alt-contact" routerLinkActive="active">
+                            Alt Contacts
+                        </a>
+                        <a routerLink="physician" routerLinkActive="active">
+                            Physician
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <router-outlet></router-outlet>
+            <router-outlet name='contact-history'></router-outlet>
+            <router-outlet name='actions'></router-outlet>
+            <router-outlet name='alt-contact'></router-outlet>
+        </form>
+        <!--        <div>
+                    <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    </button>
+                </div>-->
+    </div>
+</div>

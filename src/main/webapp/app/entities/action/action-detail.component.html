@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="action">
+            <h2><span jhiTranslate="cwcrm2App.action.detail.title">Action</span> {{action.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cwcrm2App.action.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{action.dueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.startDateTime">Start Date Time</span></dt>
+                <dd>
+                    <span>{{action.startDateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.endDateTime">End Date Time</span></dt>
+                <dd>
+                    <span>{{action.endDateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.notes">Notes</span></dt>
+                <dd>
+                    <span>{{action.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.participant">Participant</span></dt>
+                <dd>
+                    <div *ngIf="action.participantId">
+                        <a [routerLink]="['/participant', action.participantId, 'view']">{{action.participantFirstName}} {{action.participantLastName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.user">User</span></dt>
+                <dd>
+                    {{action.userFistName}} {{action.userLastName}} ({{action.userId}})
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.actionSubType">Action Sub Type</span></dt>
+                <dd>
+                    <div *ngIf="action.actionSubTypeId">
+                        <a [routerLink]="['/action-sub-type', action.actionSubTypeId, 'view']">{{action.actionSubTypeName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.actionType">Action Type</span></dt>
+                <dd>
+                    <div *ngIf="action.actionTypeId">
+                        <a [routerLink]="['/action-type', action.actionTypeId, 'view']">{{action.actionTypeName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.action.actionStatus">Action Status</span></dt>
+                <dd>
+                    <div *ngIf="action.actionStatusId">
+                        <a [routerLink]="['/action-status', action.actionStatusId, 'view']">{{action.actionStatusName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/action', action.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

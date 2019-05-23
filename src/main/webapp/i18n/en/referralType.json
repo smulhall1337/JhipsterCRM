@@ -1,0 +1,21 @@
+{
+    "cwcrm2App": {
+        "referralType": {
+            "home": {
+                "title": "Referral Types",
+                "createLabel": "Create a new Referral Type",
+                "createOrEditLabel": "Create or edit a Referral Type"
+            },
+            "created": "A new Referral Type is created with identifier {{ param }}",
+            "updated": "A Referral Type is updated with identifier {{ param }}",
+            "deleted": "A Referral Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Referral Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Referral Type"
+            },
+            "name": "Name"
+        }
+    }
+}

@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cwcrm2App.supportCoordinator.home.title">Support Coordinators</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-support-coordinator" [routerLink]="['/support-coordinator/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cwcrm2App.supportCoordinator.home.createLabel">
+            Create new Support Coordinator
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="supportCoordinators">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstName"><span jhiTranslate="cwcrm2App.supportCoordinator.firstName">First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="cwcrm2App.supportCoordinator.lastName">Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phone"><span jhiTranslate="cwcrm2App.supportCoordinator.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailId"><span jhiTranslate="cwcrm2App.supportCoordinator.emailId">Email Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateHired"><span jhiTranslate="cwcrm2App.supportCoordinator.dateHired">Date Hired</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="userName"><span jhiTranslate="cwcrm2App.supportCoordinator.userName">User Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="departmentName"><span jhiTranslate="cwcrm2App.supportCoordinator.department">Department</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="employeeTypeName"><span jhiTranslate="cwcrm2App.supportCoordinator.employeeType">Employee Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="employeeSubTypeName"><span jhiTranslate="cwcrm2App.supportCoordinator.employeeSubType">Employee Sub Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let supportCoordinator of supportCoordinators ;trackBy: trackId">
+                <td><a [routerLink]="['/support-coordinator', supportCoordinator.id, 'view' ]">{{supportCoordinator.id}}</a></td>
+                <td>{{supportCoordinator.firstName}}</td>
+                <td>{{supportCoordinator.lastName}}</td>
+                <td>{{supportCoordinator.phone}}</td>
+                <td>{{supportCoordinator.emailId}}</td>
+                <td>{{supportCoordinator.dateHired | date:'mediumDate'}}</td>
+                <td>{{supportCoordinator.userName}}</td>
+                <td>
+                    <div *ngIf="supportCoordinator.departmentId">
+                        <a [routerLink]="['../department', supportCoordinator.departmentId , 'view' ]" >{{supportCoordinator.departmentName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="supportCoordinator.employeeTypeId">
+                        <a [routerLink]="['../employee-type', supportCoordinator.employeeTypeId , 'view' ]" >{{supportCoordinator.employeeTypeName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="supportCoordinator.employeeSubTypeId">
+                        <a [routerLink]="['../employee-sub-type', supportCoordinator.employeeSubTypeId , 'view' ]" >{{supportCoordinator.employeeSubTypeName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/support-coordinator', supportCoordinator.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/support-coordinator', supportCoordinator.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'support-coordinator/'+ supportCoordinator.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

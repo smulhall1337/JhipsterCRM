@@ -1,0 +1,23 @@
+{
+    "cwcrm2App": {
+        "participantNotes": {
+            "home": {
+                "title": "Participant Notes",
+                "createLabel": "Create a new Participant Notes",
+                "createOrEditLabel": "Create or edit a Participant Notes"
+            },
+            "created": "A new Participant Notes is created with identifier {{ param }}",
+            "updated": "A Participant Notes is updated with identifier {{ param }}",
+            "deleted": "A Participant Notes is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Participant Notes {{ id }}?"
+            },
+            "detail": {
+                "title": "Participant Notes"
+            },
+            "notes": "Notes",
+            "user": "User",
+            "participant": "Participant"
+        }
+    }
+}

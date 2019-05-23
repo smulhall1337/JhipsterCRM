@@ -1,0 +1,29 @@
+{
+    "cwcrm2App": {
+        "supportCoordinator": {
+            "home": {
+                "title": "Support Coordinators",
+                "createLabel": "Create a new Support Coordinator",
+                "createOrEditLabel": "Create or edit a Support Coordinator"
+            },
+            "created": "A new Support Coordinator is created with identifier {{ param }}",
+            "updated": "A Support Coordinator is updated with identifier {{ param }}",
+            "deleted": "A Support Coordinator is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Support Coordinator {{ id }}?"
+            },
+            "detail": {
+                "title": "Support Coordinator"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phone": "Phone",
+            "emailId": "Email Id",
+            "dateHired": "Date Hired",
+            "userName": "User Name",
+            "department": "Department",
+            "employeeType": "Employee Type",
+            "employeeSubType": "Employee Sub Type"
+        }
+    }
+}

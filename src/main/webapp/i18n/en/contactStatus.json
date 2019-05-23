@@ -1,0 +1,21 @@
+{
+    "cwcrm2App": {
+        "contactStatus": {
+            "home": {
+                "title": "Contact Statuses",
+                "createLabel": "Create a new Contact Status",
+                "createOrEditLabel": "Create or edit a Contact Status"
+            },
+            "created": "A new Contact Status is created with identifier {{ param }}",
+            "updated": "A Contact Status is updated with identifier {{ param }}",
+            "deleted": "A Contact Status is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Contact Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Contact Status"
+            },
+            "name": "Name"
+        }
+    }
+}

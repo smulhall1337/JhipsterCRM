@@ -1,0 +1,21 @@
+{
+    "cwcrm2App": {
+        "employeeSubType": {
+            "home": {
+                "title": "Employee Sub Types",
+                "createLabel": "Create a new Employee Sub Type",
+                "createOrEditLabel": "Create or edit a Employee Sub Type"
+            },
+            "created": "A new Employee Sub Type is created with identifier {{ param }}",
+            "updated": "A Employee Sub Type is updated with identifier {{ param }}",
+            "deleted": "A Employee Sub Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Employee Sub Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee Sub Type"
+            },
+            "name": "Name"
+        }
+    }
+}

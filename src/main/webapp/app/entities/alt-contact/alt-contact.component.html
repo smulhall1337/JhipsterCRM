@@ -1,0 +1,58 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cwcrm2App.altContact.home.title">Alt Contacts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-alt-contact" [routerLink]="['./new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cwcrm2App.altContact.home.createLabel">
+            Create new Alt Contact
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="altContacts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cwcrm2App.altContact.name">Name</span></th>
+            <th><span jhiTranslate="cwcrm2App.altContact.relationship">Relationship</span></th>
+            <th><span jhiTranslate="cwcrm2App.altContact.phone">Phone</span></th>
+            <th><span jhiTranslate="cwcrm2App.altContact.notes">Notes</span></th>
+            <th><span jhiTranslate="cwcrm2App.altContact.createdBy">Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let altContact of altContacts ;trackBy: trackId">
+                <td><a [routerLink]="['/alt-contact', altContact.id, 'view' ]">{{altContact.id}}</a></td>
+                <td>{{altContact.name}}</td>
+                <td>{{altContact.relationship}}</td>
+                <td>{{altContact.phone}}</td>
+                <td>
+                    {{altContact.createdByLogin}}
+                </td>
+                <td>{{altContact.notes}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['./', altContact.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'participant/:partId/edit/alt-contact/'+ altContact.id + '/delete'}}]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

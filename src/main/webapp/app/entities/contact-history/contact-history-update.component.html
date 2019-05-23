@@ -1,0 +1,121 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-contact-history-heading" jhiTranslate="cwcrm2App.contactHistory.home.createOrEditLabel">Create or edit a Contact History</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!contactHistory.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                           [(ngModel)]="contactHistory.id" readonly />
+                </div>
+                <div class = "row">
+                    <div class = "col-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_participant">Referral</label>
+                            <select class="form-control" id="field_participant" name="participant" [(ngModel)]="contactHistory.participantId">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="participantOption.id"
+                                        *ngFor="let participantOption of participants;
+                                    trackBy: trackParticipantById">
+                                    {{participantOption.firstName}} {{participantOption.lastName}} ({{participantOption.id}})
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "col-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_user">Entry By</label>
+                            <select class="form-control" id="field_user" name="user" [(ngModel)]="contactHistory.userId" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">
+                                    {{userOption.firstName}} {{userOption.lastName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div [hidden]="!(editForm.controls.user?.dirty && editForm.controls.user?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.user?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                    <div class = "col-3">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="cwcrm2App.contactHistory.contactType" for="field_contactType">Contact Type</label>
+                            <select class="form-control" id="field_contactType" name="contactType" [(ngModel)]="contactHistory.contactTypeId" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="contactTypeOption.id" *ngFor="let contactTypeOption of contacttypes; trackBy: trackContactTypeById">{{contactTypeOption.name}}</option>
+                            </select>
+                        </div>
+                        <div [hidden]="!(editForm.controls.contactType?.dirty && editForm.controls.contactType?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.contactType?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                    <div class = "col-3">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="cwcrm2App.contactHistory.contactSubType" for="field_contactSubType">Contact Sub Type</label>
+                            <select class="form-control" id="field_contactSubType" name="contactSubType" [(ngModel)]="contactHistory.contactSubTypeId"  required>
+                                <option *ngIf="!editForm.value.contactSubType" [ngValue]="null" selected></option>
+                                <option [ngValue]="contactSubTypeOption.id" *ngFor="let contactSubTypeOption of contactsubtypes; trackBy: trackContactSubTypeById">{{contactSubTypeOption.name}}</option>
+                            </select>
+                        </div>
+                        <div [hidden]="!(editForm.controls.contactSubType?.dirty && editForm.controls.contactSubType?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.contactSubType?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="cwcrm2App.contactHistory.date" for="field_date">Date</label>
+                            <div class="input-group">
+                                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="contactHistory.date"
+                                />
+                                <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="cwcrm2App.contactHistory.notes" for="field_notes">Notes</label>
+                            <textarea class="form-control" name="notes" id="field_notes"
+                                      [(ngModel)]="contactHistory.notes" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!--<mat-form-field>
+                    <label class="form-control-label" jhiTranslate="cwcrm2App.contactHistory.user" for="field_user">User</label>
+                    <input matInput type="text"
+                           placeholder="Select User"
+                           id="field_user"
+                           name="user"
+                           [(ngModel)]="contactHistory.userId"
+                           [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option [ngValue]="null"></mat-option>
+                        <mat-option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">
+                            {{userOption.firstName}} {{userOption.lastName}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>-->
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

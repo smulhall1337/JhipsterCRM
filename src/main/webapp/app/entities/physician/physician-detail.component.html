@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="physician">
+            <h2><span jhiTranslate="cwcrm2App.physician.detail.title">Physician</span> {{physician.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cwcrm2App.physician.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{physician.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.physician.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{physician.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.physician.phone">Phone</span></dt>
+                <dd>
+                    <span>{{physician.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.physician.fax">Fax</span></dt>
+                <dd>
+                    <span>{{physician.fax}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.physician.address">Address</span></dt>
+                <dd>
+                    <span>{{physician.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.physician.notes">Notes</span></dt>
+                <dd>
+                    <span>{{physician.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.physician.status">Status</span></dt>
+                <dd>
+                    <span>{{physician.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.physician.participant">Participant</span></dt>
+                <dd>
+                    <div *ngIf="physician.participantId">
+                        <a [routerLink]="['/participant', physician.participantId, 'view']">{{physician.participantFirstName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/physician', physician.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

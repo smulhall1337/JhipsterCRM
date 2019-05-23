@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ContactHistory.
+    -->
+    <changeSet id="20190104174626-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="participant_id"
+                                 baseTableName="contact_history"
+                                 constraintName="fk_contact_history_participant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="participant"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="contact_history"
+                                 constraintName="fk_contact_history_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="contact_type_id"
+                                 baseTableName="contact_history"
+                                 constraintName="fk_contact_history_contact_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="contact_sub_type_id"
+                                 baseTableName="contact_history"
+                                 constraintName="fk_contact_history_contact_sub_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact_sub_type"/>
+
+    </changeSet>
+</databaseChangeLog>

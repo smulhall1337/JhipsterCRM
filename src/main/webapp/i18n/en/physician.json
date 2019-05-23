@@ -1,0 +1,28 @@
+{
+    "cwcrm2App": {
+        "physician": {
+            "home": {
+                "title": "Physicians",
+                "createLabel": "Create a new Physician",
+                "createOrEditLabel": "Create or edit a Physician"
+            },
+            "created": "A new Physician is created with identifier {{ param }}",
+            "updated": "A Physician is updated with identifier {{ param }}",
+            "deleted": "A Physician is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Physician {{ id }}?"
+            },
+            "detail": {
+                "title": "Physician"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phone": "Phone",
+            "fax": "Fax",
+            "address": "Address",
+            "notes": "Notes",
+            "status": "Status",
+            "participant": "Participant"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cwcrm2App.actionSubType.home.title">Action Sub Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-action-sub-type" [routerLink]="['/action-sub-type/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cwcrm2App.actionSubType.home.createLabel">
+            Create new Action Sub Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="actionSubTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cwcrm2App.actionSubType.name">Name</span></th>
+            <th><span jhiTranslate="cwcrm2App.actionSubType.subTypeOf">Sub Type Of</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let actionSubType of actionSubTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/action-sub-type', actionSubType.id, 'view' ]">{{actionSubType.id}}</a></td>
+                <td>{{actionSubType.name}}</td>
+                <td>
+                    <div *ngIf="actionSubType.subTypeOfId">
+                        <a [routerLink]="['../action-type', actionSubType.subTypeOfId , 'view' ]" >{{actionSubType.subTypeOfName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/action-sub-type', actionSubType.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/action-sub-type', actionSubType.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'action-sub-type/'+ actionSubType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

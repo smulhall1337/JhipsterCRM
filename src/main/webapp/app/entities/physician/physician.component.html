@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cwcrm2App.physician.home.title">Physicians</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-physician" [routerLink]="['./new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cwcrm2App.physician.home.createLabel">
+            Create new Physician
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="physicians">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.firstName">First Name</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.lastName">Last Name</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.phone">Phone</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.fax">Fax</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.address">Address</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.notes">Notes</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.participant">Participant</span></th>
+            <th><span jhiTranslate="cwcrm2App.physician.user">User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let physician of physicians ;trackBy: trackId">
+                <td><a [routerLink]="['/physician', physician.id, 'view' ]">{{physician.id}}</a></td>
+                <td>{{physician.firstName}}</td>
+                <td>{{physician.lastName}}</td>
+                <td>{{physician.phone}}</td>
+                <td>{{physician.fax}}</td>
+                <td>{{physician.address}}</td>
+                <td>{{physician.notes}}</td>
+                <td>
+                    <div *ngIf="physician.participantId">
+                        <a [routerLink]="['../participant', physician.participantId , 'view' ]" >{{physician.participantFirstName}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{physician.userLogin}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['./physician', physician.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['./physician', physician.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'physician', { outlets: { popup: physician.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

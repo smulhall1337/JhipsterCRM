@@ -1,0 +1,295 @@
+<div class="row justify-content-center">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div>
+            <jhi-alert-error></jhi-alert-error>
+            <jhi-alert></jhi-alert>
+            <div class="row"> <!-- /name row -->
+                <div class="col-1">
+                    <div class="form-group" [hidden]="!participant.id">
+                        <label for="id" jhiTranslate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id"
+                               [(ngModel)]="participant.id" readonly />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.title" for="field_title">Title</label>
+                        <select class="form-control" name="title" id="field_title" [(ngModel)]="participant.title">
+                            <option [ngValue]="null"></option>
+                            <option *ngFor="let title of titles" [value]="title">{{title}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.firstName" for="field_firstName">First Name</label>
+                        <input type="text" class="form-control" name="firstName" id="field_firstName"
+                               [(ngModel)]="participant.firstName" required/>
+                        <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.firstName?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.middleInitial" for="field_middleInitial">Middle Initial</label>
+                        <input type="text" class="form-control" name="middleInitial" id="field_middleInitial" maxlength="1"
+                               [(ngModel)]="participant.middleInitial" style="text-transform: capitalize"/>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.lastName" for="field_lastName">Last Name</label>
+                        <input type="text" class="form-control" name="lastName" id="field_lastName"
+                               [(ngModel)]="participant.lastName" required/>
+                        <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.lastName?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.gender" for="field_gender">Gender</label>
+                        <select type="text" class="form-control" name="gender" id="field_gender"
+                                [(ngModel)]="participant.gender">
+                            <option [ngValue]="null"></option>
+                            <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div> <!-- /name row -->
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.email" for="field_email">Email</label>
+                        <input type="text" class="form-control" name="email" id="field_email"
+                               [(ngModel)]="participant.email" />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.registrationDate" for="field_registrationDate">Registration Date</label>
+                        <div class="input-group">
+                            <input id="field_registrationDate" type="text" class="form-control" name="registrationDate" ngbDatepicker  #registrationDateDp="ngbDatepicker"
+                                   [(ngModel)]="participant.registrationDate"
+                            />
+                            <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="registrationDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.dob" for="field_dob">Dob</label>
+                        <div class="input-group">
+                            <input id="field_dob" type="text" class="form-control" name="dob" ngbDatepicker  #dobDp="ngbDatepicker"
+                                   [(ngModel)]="participant.dob"/>
+                            <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dobDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"> <!-- address row -->
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.address" for="field_address">Address</label>
+                        <input type="text" class="form-control" name="address" id="field_address"
+                               [(ngModel)]="participant.address" />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.city" for="field_city">City</label>
+                        <input type="text" class="form-control" name="city" id="field_city"
+                               [(ngModel)]="participant.city" />
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.state" for="field_state">State</label>
+                        <input type="text" class="form-control" name="state" id="field_state" maxlength="2" style="text-transform: uppercase"
+                               [(ngModel)]="participant.state" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.county" for="field_county">County</label>
+                        <br>
+                        <!-- <p-autoComplete [(ngModel)]="participant.country" name="country"
+                                         [suggestions]="filteredCountries"
+                                         (completeMethod)="filterCountries($event)"
+                                         field="name" [size]="15" id="field_country"
+                                         [minLength]="1">
+
+                         </p-autoComplete>-->
+                        <input type="text" class="form-control" name="county" id="field_county"
+                               [(ngModel)]="participant.county" />
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.zip" for="field_zip">Zip</label>
+                        <input type="text" class="form-control" name="zip" id="field_zip"
+                               [(ngModel)]="participant.zip" />
+                    </div>
+                </div>
+            </div><!-- /address row -->
+            <div class="row"><!-- phone row -->
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.primaryPhone" for="field_primaryPhone">Primary Phone</label>
+                        <input type="text" class="form-control" name="primaryPhone" id="field_primaryPhone"
+                               [(ngModel)]="participant.primaryPhone" [textMask]="{mask: phoneMask}"/>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.primaryPhoneType" for="field_primaryPhoneType">Primary Phone Type</label>
+                        <select class="form-control" name="primaryPhoneType" id="field_primaryPhoneType"
+                                [(ngModel)]="participant.primaryPhoneType">
+                            <option [ngValue]="null"></option>
+                            <option *ngFor="let type of phoneTypes" [value]="type">{{type}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.secondaryPhone" for="field_secondaryPhone">Secondary Phone</label>
+                        <input type="text" class="form-control" name="secondaryPhone" id="field_secondaryPhone"
+                               [(ngModel)]="participant.secondaryPhone" [textMask]="{mask: phoneMask}"/>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.secondaryPhoneType" for="field_secondaryPhoneType">Secondary Phone Type</label>
+                        <select class="form-control" name="secondaryPhoneType" id="field_secondaryPhoneType"
+                                [(ngModel)]="participant.secondaryPhoneType" >
+                            <option [ngValue]="null"></option>
+                            <option *ngFor="let type of phoneTypes" [value]="type">{{type}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div><!-- /phone row -->
+            <!-- medicare/medicaid row -->
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_medicareIdNumber">Medicare ID Number</label>
+                        <input type="text" class="form-control" name="medicareIdNumber" id="field_medicareIdNumber"
+                               [(ngModel)]="participant.medicareIdNumber" />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label"  for="field_medicaidIdNumber">Medicaid ID Number</label>
+                        <input type="text" class="form-control" name="medicaidIdNumber" id="field_medicaidIdNumber"
+                               [(ngModel)]="participant.medicaidIdNumber" />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.contactStatus" for="field_contactStatus">Contact Status</label>
+                        <select class="form-control" id="field_contactStatus" name="contactStatus" [(ngModel)]="participant.contactStatusId">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="contactStatusOption.id" *ngFor="let contactStatusOption of contactstatuses; trackBy: trackContactStatusById">{{contactStatusOption.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.contactSubStatus" for="field_contactSubStatus">Contact Sub Status</label>
+                        <select class="form-control" id="field_contactSubStatus" name="contactSubStatus" [(ngModel)]="participant.contactSubStatusId">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="contactSubStatusOption.id" *ngFor="let contactSubStatusOption of contactsubstatuses; trackBy: trackContactSubStatusById">{{contactSubStatusOption.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.mco" for="field_mco">Mco</label>
+                        <select class="form-control" id="field_mco" name="mco" [(ngModel)]="participant.mcoId">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="mCOOption.id" *ngFor="let mCOOption of mcos; trackBy: trackMCOById">{{mCOOption.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.referralType" for="field_referralType">Referral Type</label>
+                        <select class="form-control" id="field_referralType" name="referralType" [(ngModel)]="participant.referralTypeId">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="referralTypeOption.id" *ngFor="let referralTypeOption of referraltypes; trackBy: trackReferralTypeById">{{referralTypeOption.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.referralSource" for="field_referralSource">Referral Source</label>
+                        <select class="form-control" id="field_referralSource" name="referralSource" [(ngModel)]="participant.referralSourceId">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="referralSourceOption.id" *ngFor="let referralSourceOption of referralsources; trackBy: trackReferralSourceById">{{referralSourceOption.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.assignedTo" for="field_assignedTo">Assigned To</label>
+                        <select class="form-control" id="field_assignedTo" name="assignedTo" [(ngModel)]="participant.assignedToId" >
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.firstName}} {{userOption.lastName}} ({{userOption.id}})</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.authorizationNumber" for="field_authorizationNumber">Authorization Number</label>
+                        <input type="text" class="form-control" name="authorizationNumber" id="field_authorizationNumber"
+                               [(ngModel)]="participant.authorizationNumber" />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cwcrm2App.participant.dateAuthorized" for="field_dateAuthorized">Date Authorized</label>
+                        <div class="input-group">
+                            <input id="field_dateAuthorized" type="text" class="form-control" name="dateAuthorized" ngbDatepicker  #dateAuthorizedDp="ngbDatepicker" [(ngModel)]="participant.dateAuthorized"
+                            />
+                            <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="dateAuthorizedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div>
+            <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            </button>
+            <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            </button>
+            <ng-container *jhiHasAnyAuthority="'ROLE_MANAGER'">
+                <button type="submit"
+                        replaceUrl="true"
+                        queryParamsHandling="merge"
+                        [routerLink]="['/', { outlets: { popup: 'participant/'+ participant.id + '/delete'} }]"
+                        class="btn btn-danger">
+                    <fa-icon [icon]="'times'"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                </button>
+            </ng-container>
+        </div>
+    </form>
+</div>

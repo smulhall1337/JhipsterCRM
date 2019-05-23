@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="actionSubType">
+            <h2><span jhiTranslate="cwcrm2App.actionSubType.detail.title">Action Sub Type</span> {{actionSubType.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cwcrm2App.actionSubType.name">Name</span></dt>
+                <dd>
+                    <span>{{actionSubType.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.actionSubType.subTypeOf">Sub Type Of</span></dt>
+                <dd>
+                    <div *ngIf="actionSubType.subTypeOfId">
+                        <a [routerLink]="['/action-type', actionSubType.subTypeOfId, 'view']">{{actionSubType.subTypeOfName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/action-sub-type', actionSubType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+    "cwcrm2App": {
+        "altContact": {
+            "home": {
+                "title": "Alt Contacts",
+                "createLabel": "Create a new Alt Contact",
+                "createOrEditLabel": "Create or edit a Alt Contact"
+            },
+            "created": "A new Alt Contact is created with identifier {{ param }}",
+            "updated": "A Alt Contact is updated with identifier {{ param }}",
+            "deleted": "A Alt Contact is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Alt Contact {{ id }}?"
+            },
+            "detail": {
+                "title": "Alt Contact"
+            },
+            "name": "Name",
+            "relationship": "Relationship",
+            "phone": "Phone",
+            "notes": "Notes",
+            "participant": "Participant",
+            "createdBy": "Created By"
+        }
+    }
+}

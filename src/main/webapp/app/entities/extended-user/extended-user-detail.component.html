@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="extendedUser">
+            <h2><span jhiTranslate="cwcrm2App.extendedUser.detail.title">Extended User</span> {{extendedUser.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cwcrm2App.extendedUser.department">Department</span></dt>
+                <dd>
+                    <div *ngIf="extendedUser.departmentId">
+                        <a [routerLink]="['/department', extendedUser.departmentId, 'view']">{{extendedUser.departmentName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.extendedUser.employeeType">Employee Type</span></dt>
+                <dd>
+                    <div *ngIf="extendedUser.employeeTypeId">
+                        <a [routerLink]="['/employee-type', extendedUser.employeeTypeId, 'view']">{{extendedUser.employeeTypeName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.extendedUser.employeeSubType">Employee Sub Type</span></dt>
+                <dd>
+                    <div *ngIf="extendedUser.employeeSubTypeId">
+                        <a [routerLink]="['/employee-sub-type', extendedUser.employeeSubTypeId, 'view']">{{extendedUser.employeeSubTypeName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cwcrm2App.extendedUser.user">User</span></dt>
+                <dd>
+                    {{extendedUser.userId}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/extended-user', extendedUser.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
