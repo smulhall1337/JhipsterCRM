@@ -1,6 +1,6 @@
 # JHipster CRM
 
-Wrote this CRM for my previous employer. Uses the JHipster generator.
+Wrote this CRM for my previous employer. Uses the JHipster generator. Previously it was stored in a private repo due to containing sensitive data. All previous sensitive data has been scrubbed, and project has been given its own repo. 
 
 This application was generated using JHipster 5.7.2, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.7.2](https://www.jhipster.tech/documentation-archive/v5.7.2).
 
